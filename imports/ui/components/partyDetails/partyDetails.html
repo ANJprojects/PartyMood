@@ -1,0 +1,17 @@
+The party you selected is: {{partyDetails.party.name}}<br> Description: {{partyDetails.party.description}}
+<form>
+    Party name: <input type="text" ng-model="partyDetails.party.name" /> Description: <input type="text" ng-model="partyDetails.party.description" /> Public Party? <input type="checkbox" ng-model="partyDetails.party.public">
+    <button ng-click="partyDetails.save()">Save</button>
+</form>
+
+<button ui-sref="partiesDetails">Back</button>
+
+<party-uninvited party="partyDetails.party"></party-uninvited>
+
+
+<ul>
+    Users:
+    <li ng-repeat="user in partyDetails.users">
+        <div>{{ user.emails[0].address }}</div>
+    </li>
+</ul>

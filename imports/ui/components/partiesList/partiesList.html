@@ -1,0 +1,22 @@
+<party-add></party-add><br>
+
+<input type="search" ng-model="partiesList.searchText" placeholder="Search" />
+
+<parties-sort on-change="partiesList.sortChanged(sort)" property="name" order="1"></parties-sort>
+
+<ul>
+    <li dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
+        <a ui-sref="partyDetails({ partyId: party._id })">
+      {{party.name}}
+    </a>
+        <p>{{party.description}}</p>
+        <party-remove party="party"></party-remove>
+        <party-creator party="party"></party-creator>
+        <party-unanswered party="party"></party-unanswered>
+        <party-rsvp party="party"></party-rsvp>
+        <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list>
+        <!-- <party- uninvited party="party"></party-uninvited> -->
+    </li>
+</ul>
+
+<dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>
