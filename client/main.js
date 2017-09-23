@@ -4,9 +4,9 @@ import {
     Meteor
 } from 'meteor/meteor';
 
-import {
-    name as Login
-} from '../imports/ui/components/login/login';
+// import {
+//     name as Login
+// } from '../imports/ui/components/login/login';
 
 import {
     name as Socially
@@ -16,7 +16,7 @@ import {
 
 function onReady() {
     angular.bootstrap(document, [
-        Login,
+        // Login,
         Socially
     ], {
         strictDi: true
