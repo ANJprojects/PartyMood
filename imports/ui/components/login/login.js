@@ -6,7 +6,7 @@ const name = 'login';
 export default angular.module(name, [
         angularMeteor,
         // Socially,
-        'accounts.ui'
+        // 'accounts.ui'
     ])
     .component(name, {
         template,
