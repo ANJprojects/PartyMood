@@ -18,26 +18,30 @@ class PartyCreator {
         'ngInject';
 
         $scope.viewModel(this);
-
+    }
+    $onInit() {
+        const self = this;
         this.subscribe('users');
-
         this.helpers({
             creator() {
-                if (!this.party) {
+                // console.log("this is owner" + this.party.owner);
+                if (!self.party) {
                     return '';
                 }
 
-                const owner = this.party.owner;
+                const owner = self.party.owner;
+                // console.log("this is owner" + owner);
 
                 if (Meteor.userId() !== null && owner === Meteor.userId()) {
-                    console.log(owner);
-                    return Meteor.users.findOne(owner);
+                    // console.log("this is owner" + owner);
+                    return 'Me';
                 }
-                console.log("this is owner" + owner);
+                // console.log("this is owner" + owner);
                 return Meteor.users.findOne(owner);
             }
         });
     }
+
 }
 
 const name = 'partyCreator';
@@ -48,9 +52,9 @@ export default angular.module(name, [
     DisplayNameFilter
 ]).component(name, {
     template,
-    controllerAs: name,
     bindings: {
         party: '<'
     },
+    controllerAs: name,
     controller: PartyCreator
 });

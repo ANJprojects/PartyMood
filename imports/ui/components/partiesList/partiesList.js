@@ -9,7 +9,7 @@ import {
 
 import {
     Parties
-} from '../../../api/parties/collection';
+} from '../../../api/parties';
 import template from './partiesList.html';
 import {
     name as PartiesSort
@@ -59,6 +59,7 @@ class PartiesList {
                 return Parties.find({}, {
                     sort: this.getReactively('sort')
                 });
+
             },
             partiesCount() {
                 return Counts.get('numberOfParties');
@@ -100,9 +101,8 @@ export default angular.module(name, [
 
 function config($stateProvider) {
     'ngInject';
-    $stateProvider
-        .state('parties', {
-            url: '/parties',
-            template: '<parties-list></parties-list>'
-        });
+    $stateProvider.state('parties', {
+        url: '/parties',
+        template: '<parties-list></parties-list>'
+    });
 }
