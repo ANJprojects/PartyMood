@@ -2,16 +2,16 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './navigation.html';
-// import {
-//     name as Socially
-// } from '../socially/socially';
+import {
+    name as Login
+} from '../login/login';
 
 const name = 'navigation';
 
 //create a module
 export default angular.module(name, [
         angularMeteor,
-        // Socially,
+        Login,
         'accounts.ui'
     ])
     .component(name, {
