@@ -1,20 +1,21 @@
-<div class="container" style="background-color: #33b5e5; padding: 15px; color: #ffffff; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)">
+<div class="container" style=" padding: 15px; color: #ffffff; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)">
     <div class="row">
-        <label style="font-size:24px" for="title">Party title</label><br>
+        <label style="font-size:24px;" for="title">Party title</label><br>
         <textarea id="title" type="textarea" ng-model="partyAdd.party.name"></textarea>
     </div>
     <div class="row">
-        <label style="font-size:24px" for="description">
+        <label style="font-size:24px;" for="description">
           Image url
         </label><br>
         <textarea type="textarea" ng-model="partyAdd.party.img"></textarea>
     </div>
     <div class="row">
-        <label style="font-size:24px" for="description">
+        <label style="font-size:24px;" for="description">
           Description
         </label><br>
         <textarea rows="4" cols="32" type="textarea" ng-model="partyAdd.party.description"></textarea>
     </div>
+
     <div class="row">
     <label style="font-size:24px" for="time">
       Time
@@ -28,9 +29,6 @@
      <textarea type="textarea" ng-model="partyAdd.party.Date"></textarea>
     </div>
 
-    <label>
-    Public Party?
-</label>
-    <input type="checkbox" ng-model="partyAdd.party.public">
-    <button ng-click="partyAdd.submit()">Add Party!</button>
+
+    <button style="color:black;" ng-click="partyAdd.submit()">Add Party!</button>
 </div>

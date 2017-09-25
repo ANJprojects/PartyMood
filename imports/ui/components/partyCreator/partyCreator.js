@@ -37,7 +37,13 @@ class PartyCreator {
                     return 'Me';
                 }
                 // console.log("this is owner" + owner);
-                return Meteor.users.findOne(owner);
+                const creator = Meteor.users.findOne(owner);
+                if (creator) {
+                    const mail = creator.emails[0].address;
+                    return mail;
+                }
+
+
             }
         });
     }
