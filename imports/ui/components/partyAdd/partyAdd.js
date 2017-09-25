@@ -45,6 +45,27 @@ function config($stateProvider) {
 
     $stateProvider.state('partyAdd', {
         url: '/add',
-        template: '<party-add></party-add>'
+        template: '<party-add></party-add>',
+        resolve: {
+            authenticate: function($q, $state, $timeout) {
+                let deferred = $q.defer();
+                Tracker.autorun(function(a) {
+                    let owner = Meteor.userId();
+                    if (owner === null) {
+                        a.stop();
+                        $timeout(function() {
+                            $state.go('login');
+                        }, 0);
+
+                    } else {
+                        a.stop();
+                        return deferred.resolve();
+                    }
+                });
+                return deferred.promise;
+            }
+        }
+
     });
+
 }
