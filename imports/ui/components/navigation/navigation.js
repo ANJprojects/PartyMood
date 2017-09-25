@@ -11,8 +11,9 @@ const name = 'navigation';
 //create a module
 export default angular.module(name, [
         angularMeteor,
-         Login,
-        'accounts.ui'
+
+        'accounts.ui',
+        Login
     ])
     .component(name, {
         template,

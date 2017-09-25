@@ -1,4 +1,4 @@
-The party you selected is: {{partyDetails.party.name}}<br> Description: {{partyDetails.party.description}}
+<img src="{{partyDetails.party.img}}" width='100%'> The party you selected is: {{partyDetails.party.name}}<br> Description: {{partyDetails.party.description}}
 <form>
     Party name: <input type="text" ng-model="partyDetails.party.name" /> Description: <input type="text" ng-model="partyDetails.party.description" /> Public Party? <input type="checkbox" ng-model="partyDetails.party.public">
     <button ng-click="partyDetails.save()">Save</button>
