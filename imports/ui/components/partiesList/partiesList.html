@@ -3,21 +3,39 @@
 
 
 
-<div class='row' dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
-    <a ui-sref="partyDetails({ partyId: party._id })">
-      {{party.name}}
-      <div>
-         <img src="{{party.img}}" width='100px'>
-      </div>
-    </a>
-    <p>{{party.description}}</p>
-    <party-remove party="party"></party-remove>
-    <party-creator party="party"></party-creator>
-    <party-unanswered party="party"></party-unanswered>
-    <party-rsvp party="party"></party-rsvp>
-    <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list>
-    <!-- <party- uninvited party="party"></party-uninvited> -->
-
+<div class='row'>
+    <div class="col l4" dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
+        <div class="card">
+            <div class="card-image">
+                <a ui-sref="partyDetails({ partyId: party._id })">
+                <img style="height:350px;" src="{{party.img}}"></a>
+            </div>
+            <div class="card-content">
+                <a ui-sref="partyDetails({ partyId: party._id })">
+                <span class="card-title activator grey-text text-darken-4">{{party.name}}</span>
+                </a>
+                <p>{{party.description}}</p>
+                <party-remove party="party"></party-remove>
+                <party-creator party="party"></party-creator>
+                <party-unanswered party="party"></party-unanswered>
+                <party-rsvp party="party"></party-rsvp>
+                <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list>
+            </div>
+        </div>
+        <!-- <a ui-sref="partyDetails({ partyId: party._id })">
+           {{party.name}}
+           <div>
+               <img src="{{party.img}}" width='100px'>
+           </div>
+       </a>
+        <p>{{party.description}}</p>
+        <party-remove party="party"></party-remove>
+        <party-creator party="party"></party-creator>
+        <party-unanswered party="party"></party-unanswered>
+        <party-rsvp party="party"></party-rsvp>
+        <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list>
+        <!-- <party- uninvited party="party"></party-uninvited> -->
+    </div> -->
 </div>
 
 <dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>
