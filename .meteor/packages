@@ -24,5 +24,5 @@ accounts-twitter
 tmeasday:publish-counts
 check
 email
-fourseven:scss@3.4.3
-materialize:materialize@0.97.7
+fourseven:scss
+materialize:materialize
