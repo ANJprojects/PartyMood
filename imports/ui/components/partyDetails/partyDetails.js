@@ -15,21 +15,35 @@ import {
 } from '../partyUninvited/partyUninvited';
 
 class PartyDetails {
-    constructor($stateParams, $scope, $reactive) {
+    constructor($stateParams, $scope, $reactive, $timeout) {
         'ngInject';
 
         $reactive(this).attach($scope);
 
         this.partyId = $stateParams.partyId;
+        $timeout(function() {
+            $('ul.tabs').tabs({
+                swipeable: true,
+                responsiveThreshold: 1920
+            });
+        }, 100);
+        // $scope.initializeTabs = function() {
+        //     $('ul.tabs').tabs({
+        //         swipeable: true,
+        //         responsiveThreshold: 1920
+        //     });
+        // };
 
         this.subscribe('parties');
         this.subscribe('users');
 
         this.helpers({
             party() {
-                return Parties.findOne({
+                const party = Parties.findOne({
                     _id: $stateParams.partyId
                 });
+                console.log(party);
+                return party;
             },
             users() {
                 return Meteor.users.find({});
@@ -76,14 +90,14 @@ function config($stateProvider) {
     $stateProvider.state('partyDetails', {
         url: '/parties/:partyId',
         template: '<party-details></party-details>',
-        resolve: {
-            currentUser($q) {
-                if (Meteor.userId() === null) {
-                    return $q.reject('AUTH_REQUIRED');
-                } else {
-                    return $q.resolve();
-                }
-            }
-        }
+        // resolve: {
+        //     currentUser($q) {
+        //         if (Meteor.userId() === null) {
+        //             return $q.reject('AUTH_REQUIRED');
+        //         } else {
+        //             return $q.resolve();
+        //         }
+        //     }
+        // }
     });
 }
