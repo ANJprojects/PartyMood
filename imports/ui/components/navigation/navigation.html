@@ -1,15 +1,36 @@
-<ul style="list-style-type: none; overflow: hidden; background-color: transparent; color: white;">
-    <li style='float:left; padding: 14px 16px;  '>
-        <a style="color:white" href="/parties">Home</a>
-    </li>
+<nav class=" z-depth-1" style="background-color:transparent">
+    <div class="nav-wrapper">
 
 
-  
-    <li style=' float:right; padding: 14px 16px; '>
-        <a style="color:white" href="/login"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+        <a href="/parties"><img style="height:80%" src="/logoImage/3.png">
+        <!-- <ul style=" background-color: transparent; color: white;">
+    <li class="brand-logo" style='float:left; padding: 14px 16px;  '>
+        <a       style="color:#e53935" href="/parties">Party Mood</a>
+        </li>
+        <li style=' float:right; padding: 14px 16px; '>
+            <a style="color:#e53935" href="/login"><i class="small material-icons">account_circle</i></a>
+        </li>
+        <li style='float:right; padding: 14px 16px; color:white '>
+            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add Party" id="add" style="color:#e53935" href="/add"><i class="small material-icons " >add_box</i></a>
+        </li>
+        <li style='float:right; padding: 14px 16px;  '>
+            <a style="color:#e53935" href="/parties"><i class="small material-icons">home</i></a>
+        </li>
+        </ul> -->
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+                <a ng-click="navigation.click=true"><i style="color:#e53935" class="small material-icons">search</i></a>
+            </li>
+            <li>
+                <div class="input-field col s2" ng-if="navigation.click">
+                    <input style="color:#e53935" id="search" type="text" ng-model="partiesList.searchText" class="validate"><span ng-click="navigation.click=false"><i style="color:#e53935" class="small material-icons">close</i></span></input>
+                </div>
+            </li>
+            <li></li>
+            <li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add Party" id="add" style="color:#e53935" href="/add"><i class="small material-icons " >add_box</i></a></li>
+            <li><a style="color:#e53935" href="/login"><i class="small material-icons">account_circle</i></li>
+        </ul>
 
-    </li>
-    <li style='float:right; padding: 14px 16px; color:white '>
-        <a style="color:white" href="/add">Addparty</a>
-    </li>
-</ul>
+    </div>
+</nav>
+<!-- style="background-color:#ef9a9a" -->
