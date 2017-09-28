@@ -44,7 +44,7 @@ class PartiesList {
         this.sort = {
             name: 1
         };
-        this.searchText = '';
+
 
         this.subscribe('parties', () => [{
             limit: parseInt(this.perPage),
@@ -94,6 +94,9 @@ export default angular.module(name, [
 
     ]).component(name, {
         template,
+        bindings: {
+            searchText: '='
+        },
         controllerAs: name,
         controller: PartiesList
     })
