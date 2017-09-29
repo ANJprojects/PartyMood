@@ -15,15 +15,6 @@ class Navigation {
                 delay: 50
             });
         }, 100);
-        this.click = false;
-        this.searchText = '';
-        this.helpers({
-            kl() {
-                console.log("searchtext:" +
-                    this.getReactively('searchText'));
-            }
-        });
-
     }
 }
 
