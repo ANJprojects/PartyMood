@@ -33,8 +33,8 @@ class PartyDetails {
         //         responsiveThreshold: 1920
         //     });
         // };
-
-        this.subscribe('parties');
+        this.selector = {};
+        this.subscribe('parties', () => [this.selector]);
         this.subscribe('users');
 
         this.helpers({
