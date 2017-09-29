@@ -1,35 +1,86 @@
-<div class="row">
-    <div class=row>
-        <!-- <div class="input-field col s2 right">
-            <input style="color:white" id="search" type="text" ng-model="partiesList.searchText" class="validate">
-        <label for="search">Search</label>
-    </div> -->
-        <parties-sort on-change="partiesList.sortChanged(sort)" property="name" order="1"></parties-sort>
-    </div>
-
-
-
-    <div class='row'>
-        <div class="col l3" dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
-            <div class="card" style="height:500px;">
-                <div class="card-image" size="height:350px">
-                    <a ui-sref="partyDetails({ partyId: party._id })">
-                       <img style="height:300px;" src="{{party.img}}">
-                    </a>
+<div class='row'>
+    <div class="col l3">
+        <div class="card" style="height:400px; width:300px; position:fixed;">
+            <div class="input-field">
+                <input id="search" type="text" ng-model="partiesList.searchText" class="validate">
+                <label for="search">Search</label>
+            </div>
+            <div class="card-content red lighten-5">
+                <div class="center-align">
+                    <h5>Categories</h5>
                 </div>
-                <div class="card-content">
-                    <a ui-sref="partyDetails({ partyId: party._id })">
-                       <span class="card-title activator grey-text text-darken-4">{{party.name}}</span>
-                    </a>
-                    <p>{{party.description}}</p>
-                    <!-- <party-remove party="party"></party-remove>
-                    <party-creator party="party"></party-creator>
-                    <party-unanswered party="party"></party-unanswered>
-                    <party-rsvp party="party"></party-rsvp>
-                    <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list> -->
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>
+                        <a style="color:#e53935" href="#ownedParty">Owned parties</a>
+                    </li>
+                    <li>
+                        <a style="color:#e53935" href="#publicParty"> Public parties</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col l9">
+        <div class="right">
+            <parties-sort on-change="partiesList.sortChanged(sort)" property="name" order="1"></parties-sort>
+        </div><br>
+        <div id="ownedParty" class="section scrollspy">
+            <div class="row">
+                <div>
+                    <h5>Owned Parties</h5>
+                </div>
+                <div class="col l4" dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
+                    <div class="card" style="height:500px;">
+                        <div class="card-image" size="height:350px">
+                            <a ui-sref="partyDetails({ partyId: party._id })">
+                                <img style="height:300px;" src="{{party.img}}">
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <a ui-sref="partyDetails({ partyId: party._id })">
+                                <span class="card-title activator grey-text text-darken-4">{{party.name}}</span>
+                            </a>
+                            <p>{{party.description}}</p>
+                            <!-- <party-remove party="party"></party-remove>
+                            <party-creator party="party"></party-creator>
+                            <party-unanswered party="party"></party-unanswered>
+                            <party-rsvp party="party"></party-rsvp>
+                            <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="publicParty" class="section scrollspy">
+            <div class="row">
+                <div>
+                    <h5>Public Parties</h5>
+                </div>
+                <div class="col l4" dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
+                    <div class="card" style="height:500px;">
+                        <div class="card-image" size="height:350px">
+                            <a ui-sref="partyDetails({ partyId: party._id })">
+                                <img style="height:300px;" src="{{party.img}}">
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <a ui-sref="partyDetails({ partyId: party._id })">
+                                <span class="card-title activator grey-text text-darken-4">{{party.name}}</span>
+                            </a>
+                            <p>{{party.description}}</p>
+                            <!-- <party-remove party="party"></party-remove>
+                            <party-creator party="party"></party-creator>
+                            <party-unanswered party="party"></party-unanswered>
+                            <party-rsvp party="party"></party-rsvp>
+                            <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list> -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>
+<dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>

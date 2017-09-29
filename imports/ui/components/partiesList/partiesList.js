@@ -34,19 +34,55 @@ import {
 } from '../partyUnanswered/partyUnanswered';
 
 class PartiesList {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, $timeout) {
         'ngInject';
 
         $reactive(this).attach($scope);
-
+        this.searchText = '';
         this.perPage = 3;
         this.page = 1;
         this.sort = {
             name: 1
         };
+        $timeout(function() {
+            $('.scrollspy').scrollSpy({
+                scrollOffset: 50
+            });
+        });
 
+        this.userId = Meteor.userId();
+        this.selector = {
+            $or: [{
+                // the public parties
+                $and: [{
+                    _id: this.userId
+                }, {
+                    _id: {
+                        $exists: true
+                    }
+                }]
+            }, {
+                // when logged in user is the owner
+                $and: [{
+                    owner: this.userId
+                }, {
+                    owner: {
+                        $exists: true
+                    }
+                }]
+            }, {
+                // when logged in user is one of invited
+                $and: [{
+                    invited: this.userId
+                }, {
+                    invited: {
+                        $exists: true
+                    }
+                }]
+            }]
+        };
 
-        this.subscribe('parties', () => [{
+        this.subscribe('parties', () => [this.selector, {
             limit: parseInt(this.perPage),
             skip: parseInt((this.getReactively('page') - 1) * this.perPage),
             sort: this.getReactively('sort')
@@ -94,9 +130,6 @@ export default angular.module(name, [
 
     ]).component(name, {
         template,
-        bindings: {
-            searchText: '='
-        },
         controllerAs: name,
         controller: PartiesList
     })
