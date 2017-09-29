@@ -12,7 +12,8 @@ import {
 } from '../../../api/parties';
 
 class PartyAdd {
-    constructor() {
+    constructor($reactive, $timeout, $scope) {
+        'ngInject';
         this.party = {};
     }
 
