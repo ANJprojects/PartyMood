@@ -10,37 +10,37 @@ import {
 } from './collection';
 
 if (Meteor.isServer) {
-    Meteor.publish('parties', function(options, searchString) {
-        const selector = {
-            // $or: [{
-            //     // the public parties
-            //     $and: [{
-            //         _id: this.userId
-            //     }, {
-            //         _id: {
-            //             $exists: true
-            //         }
-            //     }]
-            // }, {
-            //     // when logged in user is the owner
-            //     $and: [{
-            //         owner: this.userId
-            //     }, {
-            //         owner: {
-            //             $exists: true
-            //         }
-            //     }]
-            // }, {
-            //     // when logged in user is one of invited
-            //     $and: [{
-            //         invited: this.userId
-            //     }, {
-            //         invited: {
-            //             $exists: true
-            //         }
-            //     }]
-            // }]
-        };
+    Meteor.publish('parties', function(selector, options, searchString) {
+        // const selector = {
+        //     $or: [{
+        //         // the public parties
+        //         $and: [{
+        //             _id: this.userId
+        //         }, {
+        //             _id: {
+        //                 $exists: true
+        //             }
+        //         }]
+        //     }, {
+        //         // when logged in user is the owner
+        //         $and: [{
+        //             owner: this.userId
+        //         }, {
+        //             owner: {
+        //                 $exists: true
+        //             }
+        //         }]
+        //     }, {
+        //         // when logged in user is one of invited
+        //         $and: [{
+        //             invited: this.userId
+        //         }, {
+        //             invited: {
+        //                 $exists: true
+        //             }
+        //         }]
+        //     }]
+        // };
         if (typeof searchString === 'string' && searchString.length) {
             selector.name = {
                 $regex: `.*${searchString}.*`,
