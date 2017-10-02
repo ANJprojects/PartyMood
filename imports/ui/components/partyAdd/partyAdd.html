@@ -24,9 +24,17 @@
   </div>
 
 
-
-
-  <button style="color:black;" ng-click="partyAdd.submit()">Add Party!</button>
+  <!--  <div class="row">
+    <label style="font-size:24px" for="date">
+      Date
+    </label>
+     <textarea type="textarea" ng-model="partyAdd.party.Date"></textarea>
+   </div>-->
+  <div>
+    <input type="checkbox" id="public" class="filled-in" ng-model="partyAdd.party.public" />
+    <label for="public">Public party<label>
+    </div>
+    <button style="color:black;" ng-click="partyAdd.submit()">Add Party!</button>
 </div>
 <!-- opacity is used to use scrollfire -->
 <!-- style>
