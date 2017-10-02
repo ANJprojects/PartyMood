@@ -45,7 +45,7 @@ class PartiesList {
 
         $reactive(this).attach($scope);
         this.searchText = '';
-        this.clickOwnedParties = false;
+        this.clickOwnedParties = true;
         this.clickPublicParties = false;
 
         $timeout(function() {
