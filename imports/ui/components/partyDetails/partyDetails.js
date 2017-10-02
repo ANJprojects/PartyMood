@@ -13,6 +13,12 @@ import {
 import {
     name as PartyUninvited
 } from '../partyUninvited/partyUninvited';
+import {
+    name as PartyRsvp
+} from '../partyRsvp/partyRsvp';
+import {
+    name as PartyRsvpsList
+} from '../partyRsvpsList/partyRsvpsList';
 
 class PartyDetails {
     constructor($stateParams, $scope, $reactive, $timeout) {
@@ -76,7 +82,11 @@ const name = 'partyDetails';
 export default angular.module(name, [
         angularMeteor,
         uiRouter,
-        PartyUninvited
+        PartyUninvited,
+        PartyRsvp,
+        PartyRsvpsList
+
+
     ]).component(name, {
         template,
         controllerAs: name,

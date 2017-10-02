@@ -13,6 +13,7 @@ Meteor.startup(() => {
         const parties = [{
             'name': 'Dubstep-Free Zone',
             'description': 'Fast just got faster with Nexus S.'
+
         }, {
             'name': 'All dubstep all the time',
             'description': 'Get it on!'
