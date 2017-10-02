@@ -13,10 +13,10 @@
             <div class="card-content">
                 <ul>
                     <li>
-                        <a style="color:#e53935" href="#ownedParty">Owned parties</a>
+                        <a style="color:#e53935" ng-click="partiesList.clickOwnedParties=true; partiesList.clickPublicParties=false;" href="/">Owned parties</a>
                     </li>
                     <li>
-                        <a style="color:#e53935" href="#publicParty"> Public parties</a>
+                        <a style="color:#e53935" ng-click="partiesList.clickPublicParties=true; partiesList.clickOwnedParties=false; " href="/"> Public parties</a>
                     </li>
                 </ul>
             </div>
@@ -26,61 +26,20 @@
         <div class="right">
             <parties-sort on-change="partiesList.sortChanged(sort)" property="name" order="1"></parties-sort>
         </div><br>
-        <div id="ownedParty" class="section scrollspy">
+
+        <div id="publicParty" class="section scrollspy" ng-if="partiesList.clickPublicParties">
             <div class="row">
-                <div>
-                    <h5>Owned Parties</h5>
-                </div>
-                <div class="col l4" dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
-                    <div class="card" style="height:500px;">
-                        <div class="card-image" size="height:350px">
-                            <a ui-sref="partyDetails({ partyId: party._id })">
-                                <img style="height:300px;" src="{{party.img}}">
-                            </a>
-                        </div>
-                        <div class="card-content">
-                            <a ui-sref="partyDetails({ partyId: party._id })">
-                                <span class="card-title activator grey-text text-darken-4">{{party.name}}</span>
-                            </a>
-                            <p>{{party.description}}</p>
-                            <!-- <party-remove party="party"></party-remove>
-                            <party-creator party="party"></party-creator>
-                            <party-unanswered party="party"></party-unanswered>
-                            <party-rsvp party="party"></party-rsvp>
-                            <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list> -->
-                        </div>
-                    </div>
-                </div>
+                <public-parties>
+                    <public-parties>
             </div>
         </div>
-        <div id="publicParty" class="section scrollspy">
+        <div id="ownedParty" class="section scrollspy" ng-if="partiesList.clickOwnedParties">
             <div class="row">
-                <div>
-                    <h5>Public Parties</h5>
-                </div>
-                <div class="col l4" dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
-                    <div class="card" style="height:500px;">
-                        <div class="card-image" size="height:350px">
-                            <a ui-sref="partyDetails({ partyId: party._id })">
-                                <img style="height:300px;" src="{{party.img}}">
-                            </a>
-                        </div>
-                        <div class="card-content">
-                            <a ui-sref="partyDetails({ partyId: party._id })">
-                                <span class="card-title activator grey-text text-darken-4">{{party.name}}</span>
-                            </a>
-                            <p>{{party.description}}</p>
-                            <!-- <party-remove party="party"></party-remove>
-                            <party-creator party="party"></party-creator>
-                            <party-unanswered party="party"></party-unanswered>
-                            <party-rsvp party="party"></party-rsvp>
-                            <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list> -->
-                        </div>
-                    </div>
-                </div>
+                <owned-parties>
+                    <owned-parties>
             </div>
         </div>
     </div>
 </div>
-
-<dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>
+<!-- <owned-parties>
+    <owned-parties> -->

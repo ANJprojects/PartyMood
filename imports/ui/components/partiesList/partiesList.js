@@ -1,7 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
-import utilsPagination from 'angular-utils-pagination';
+
 
 import {
     Counts
@@ -32,6 +32,12 @@ import {
 import {
     name as PartyUnanswered
 } from '../partyUnanswered/partyUnanswered';
+import {
+    name as OwnedParties
+} from '../ownedParties/ownedParties';
+import {
+    name as PublicParties
+} from '../publicParties/publicParties'
 
 class PartiesList {
     constructor($scope, $reactive, $timeout) {
@@ -39,11 +45,9 @@ class PartiesList {
 
         $reactive(this).attach($scope);
         this.searchText = '';
-        this.perPage = 3;
-        this.page = 1;
-        this.sort = {
-            name: 1
-        };
+        this.clickOwnedParties = true;
+        this.clickPublicParties = false;
+
         $timeout(function() {
             $('.scrollspy').scrollSpy({
                 scrollOffset: 50
@@ -51,65 +55,13 @@ class PartiesList {
         });
 
         this.userId = Meteor.userId();
-        this.selector = {
-            $or: [{
-                // the public parties
-                $and: [{
-                    _id: this.userId
-                }, {
-                    _id: {
-                        $exists: true
-                    }
-                }]
-            }, {
-                // when logged in user is the owner
-                $and: [{
-                    owner: this.userId
-                }, {
-                    owner: {
-                        $exists: true
-                    }
-                }]
-            }, {
-                // when logged in user is one of invited
-                $and: [{
-                    invited: this.userId
-                }, {
-                    invited: {
-                        $exists: true
-                    }
-                }]
-            }]
-        };
-
-        this.subscribe('parties', () => [this.selector, {
-            limit: parseInt(this.perPage),
-            skip: parseInt((this.getReactively('page') - 1) * this.perPage),
-            sort: this.getReactively('sort')
-        }, this.getReactively('searchText')]);
 
         this.subscribe('users');
-
-        this.helpers({
-            parties() {
-                return Parties.find({}, {
-                    sort: this.getReactively('sort')
-                });
-
-            },
-            partiesCount() {
-                return Counts.get('numberOfParties');
-            }
-        });
+        console.log(this.clickOwnedParties);
+        console.log(this.clickPublicParties);
     }
 
-    pageChanged(newPage) {
-        this.page = newPage;
-    }
 
-    sortChanged(sort) {
-        this.sort = sort;
-    }
 }
 
 const name = 'partiesList';
@@ -122,11 +74,12 @@ export default angular.module(name, [
         PartyCreator,
         PartiesSort,
         uiRouter,
-        utilsPagination,
         //PartyUninvited,
         PartyRsvp,
         PartyRsvpsList,
-        PartyUnanswered
+        PartyUnanswered,
+        OwnedParties,
+        PublicParties
 
     ]).component(name, {
         template,

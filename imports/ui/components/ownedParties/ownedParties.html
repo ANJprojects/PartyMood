@@ -1,0 +1,28 @@
+<div class="row">
+    <div>
+        <h5>Owned Parties</h5>
+    </div>
+    <div class="col l4" dir-paginate="party in ownedParties.parties | itemsPerPage: ownedParties.perPage" total-items="ownedParties.partiesCount">
+        <div class="card" style="height:500px;">
+            <div class="card-image" size="height:350px">
+                <a ui-sref="partyDetails({ partyId: party._id })">
+                <img style="height:300px;" src="{{party.img}}">
+            </a>
+            </div>
+            <div class="card-content">
+                <a ui-sref="partyDetails({ partyId: party._id })">
+                <span class="card-title activator grey-text text-darken-4">{{party.name}}</span>
+            </a>
+                <p>{{party.description}}</p>
+                <!-- <party-remove party="party"></party-remove>
+            <party-creator party="party"></party-creator>
+            <party-unanswered party="party"></party-unanswered>
+            <party-rsvp party="party"></party-rsvp>
+            <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <dir-pagination-controls on-page-change="ownedParties.pageChanged(newPageNumber)"></dir-pagination-controls>
+</div>
