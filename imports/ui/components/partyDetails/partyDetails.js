@@ -11,14 +11,17 @@ import {
     Parties
 } from '../../../api/parties';
 import {
-    name as PartyUninvited
-} from '../partyUninvited/partyUninvited';
+    name as PartyUninvitedUsers
+} from '../partyUninvitedUsers/partyUninvitedUsers';
 import {
     name as PartyRsvp
 } from '../partyRsvp/partyRsvp';
 import {
     name as PartyRsvpsList
 } from '../partyRsvpsList/partyRsvpsList';
+import {
+    name as PartyCreator
+} from '../partyCreator/partyCreator';
 
 class PartyDetails {
     constructor($stateParams, $scope, $reactive, $timeout) {
@@ -52,6 +55,7 @@ class PartyDetails {
                 return party;
             },
             users() {
+                console.log(Meteor.users.find({}));
                 return Meteor.users.find({});
             }
         });
@@ -74,6 +78,16 @@ class PartyDetails {
             }
         });
     }
+    invite() {
+        console.log(this.party.owner);
+        console.log(Meteor.userId());
+        if (this.party.owner === Meteor.userId() && !this.party.public) {
+            console.log("true");
+            return true;
+        }
+        return false;
+    }
+
 }
 
 const name = 'partyDetails';
@@ -82,10 +96,10 @@ const name = 'partyDetails';
 export default angular.module(name, [
         angularMeteor,
         uiRouter,
-        PartyUninvited,
+        PartyUninvitedUsers,
         PartyRsvp,
-        PartyRsvpsList
-
+        PartyRsvpsList,
+        PartyCreator
 
     ]).component(name, {
         template,
