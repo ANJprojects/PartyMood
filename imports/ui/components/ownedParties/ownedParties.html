@@ -1,6 +1,14 @@
 <div class="row">
-    <div>
-        <h5>Owned Parties</h5>
+    <div class="row" style="margin-bottom:0px; padding-bottom:0;">
+        <div style="padding-left:10px">
+            <h5 style="color:#0288d1; margin-bottom:0px; padding-bottom:0; float:left">Owned Parties</h5>
+        </div>
+        <div style="float:right; padding-right:10px; padding-top:10px;">
+            <form>
+                <input type="text" id="search" placeholder="Search parties.." style="width: 150px;height:29px;" ng-model="ownedParties.searchText">
+                <!-- <label for="search" style="color:#e53935"><i class="small material-icons">search</i></label> -->
+            </form>
+        </div>
     </div>
     <div class="col l4" dir-paginate="party in ownedParties.parties | itemsPerPage: ownedParties.perPage" total-items="ownedParties.partiesCount">
         <div class="card" style="height:500px;">
