@@ -1,28 +1,42 @@
-<div>
+<!-- <div>
     <h5>Public Parties</h5>
-</div>
+</div> -->
 <div class="row">
-    <div class="col l4" dir-paginate="party in publicParties.parties | itemsPerPage: publicParties.perPage" total-items="publicParties.partiesCount">
-        <div class=" card " style="height:500px; ">
-            <div class="card-image " size="height:350px ">
-                <a ui-sref="partyDetails({ partyId: party._id }) ">
-                <img style="height:300px; " src="{{party.img}} ">
-            </a>
-            </div>
-            <div class="card-content ">
-                <a ui-sref="partyDetails({ partyId: party._id }) ">
-                <span class="card-title activator grey-text text-darken-4 ">{{party.name}}</span>
-            </a>
-                <p>{{party.description}}</p>
-                <!-- <party-remove party="party "></party-remove>
+    <div class="row" style="margin-bottom:0px; padding-bottom:0;">
+        <div style="padding-left:10px;">
+            <h5 style="color:#388e3c; margin-bottom:0px; padding-bottom:0; float:left">Public Parties</h5>
+        </div>
+
+        <div style="float:right; padding-right:10px; padding-top:10px;">
+            <form>
+                <input type="search" id="search" placeholder="Search parties.." style="width: 150px;height:29px;" ng-model="publicParties.searchText">
+                <!-- <label for="search" style="color:#e53935"><i class="small material-icons">search</i></label> -->
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col l4" dir-paginate="party in publicParties.parties | itemsPerPage: publicParties.perPage" total-items="publicParties.partiesCount">
+            <div class=" card " style="height:500px; ">
+                <div class="card-image " size="height:350px ">
+                    <a ui-sref="partyDetails({ partyId: party._id }) ">
+                        <img style="height:300px; " src="{{party.img}} ">
+                    </a>
+                </div>
+                <div class="card-content ">
+                    <a ui-sref="partyDetails({ partyId: party._id }) ">
+                       <span class="card-title activator grey-text text-darken-4 ">{{party.name}}</span>
+                    </a>
+                    <p>{{party.description}}</p>
+                    <!-- <party-remove party="party "></party-remove>
             <party-creator party="party "></party-creator>
             <party-unanswered party="party "></party-unanswered>
             <party-rsvp party="party "></party-rsvp>
             <party-rsvps-list rsvps="party.rsvps "></party-rsvps-list> -->
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row ">
-    <dir-pagination-controls on-page-change="publicParties.pageChanged(newPageNumber) "></dir-pagination-controls>
-</div>
+    <div class="row ">
+        <dir-pagination-controls on-page-change="publicParties.pageChanged(newPageNumber) "></dir-pagination-controls>
+    </div>
