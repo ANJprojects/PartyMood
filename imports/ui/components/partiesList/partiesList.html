@@ -1,32 +1,23 @@
-<div class='row'>
-    <div class="col l3">
-        <div class="card" style="height:400px; width:300px; position:fixed;">
-            <div class="input-field">
-                <input id="search" type="text" ng-model="partiesList.searchText" class="validate">
-                <label for="search">Search</label>
-            </div>
-            <div class="card-content red lighten-5">
-                <div class="center-align">
-                    <h5>Categories</h5>
-                </div>
-            </div>
-            <div class="card-content">
-                <ul>
-                    <li>
-                        <a style="color:#e53935" ng-click="partiesList.clickOwnedParties=true; partiesList.clickPublicParties=false;" href="/">Owned parties</a>
-                    </li>
-                    <li>
-                        <a style="color:#e53935" ng-click="partiesList.clickPublicParties=true; partiesList.clickOwnedParties=false; " href="/"> Public parties</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<div class='row' style="padding-left:10%">
+    <div style="padding-left:10px">
+        <ul>
+            <li style="padding-left:10px; float:left; ">
+                <a ng-click="partiesList.clickPublicParties=true; partiesList.clickOwnedParties=false; partiesList.clickInvitedParties=false;" href="/" style="display:block; text-align: center; padding: 10px; color:white; background-color:#388e3c">Public Parties</a>
+            </li>
+            <li style="padding-left:10px; float:left;">
+                <a ng-click="partiesList.clickOwnedParties=true; partiesList.clickPublicParties=false; partiesList.clickInvitedParties=false;" href="/" style="display:block; text-align: center; padding: 10px; color:white; background-color:#0288d1">Owned Parties</a>
+            </li>
+            <li style="padding-left:10px; float:left; ">
+                <a ng-click="partiesList.clickInvitedParties=true; partiesList.clickOwnedParties=false; partiesList.clickPublicParties=false;" href="/" style="display:block; text-align: center; padding: 10px; color:white; background-color:#fbc02d">Invited Parties</a>
+            </li>
+        </ul>
     </div>
-    <div class="col l9">
-        <div class="right">
-            <parties-sort on-change="partiesList.sortChanged(sort)" property="name" order="1"></parties-sort>
-        </div><br>
 
+    <div class="col l10">
+        <!-- <div class="right">
+            <parties-sort on-change="partiesList.sortChanged(sort)" property="name" order="1"></parties-sort>
+        </div><br> -->
+        <!-- <hr> -->
         <div id="publicParty" class="section scrollspy" ng-if="partiesList.clickPublicParties">
             <div class="row">
                 <public-parties>
@@ -39,7 +30,11 @@
                     <owned-parties>
             </div>
         </div>
+        <div id="invitedParty" class="section scrollspy" ng-if="partiesList.clickInvitedParties">
+            <div class="row">
+                <invited-parties>
+                    <invited-parties>
+            </div>
+        </div>
     </div>
 </div>
-<!-- <owned-parties>
-    <owned-parties> -->

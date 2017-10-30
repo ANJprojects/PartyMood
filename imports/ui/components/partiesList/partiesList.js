@@ -38,6 +38,9 @@ import {
 import {
     name as PublicParties
 } from '../publicParties/publicParties'
+import {
+    name as InvitedParties
+} from '../invitedParties/invitedParties'
 
 class PartiesList {
     constructor($scope, $reactive, $timeout) {
@@ -45,8 +48,9 @@ class PartiesList {
 
         $reactive(this).attach($scope);
         this.searchText = '';
-        this.clickOwnedParties = true;
-        this.clickPublicParties = false;
+        this.clickOwnedParties = false;
+        this.clickPublicParties = true;
+        this.clickInvitedParties = false;
 
         $timeout(function() {
             $('.scrollspy').scrollSpy({
@@ -79,7 +83,8 @@ export default angular.module(name, [
         PartyRsvpsList,
         PartyUnanswered,
         OwnedParties,
-        PublicParties
+        PublicParties,
+        InvitedParties
 
     ]).component(name, {
         template,
