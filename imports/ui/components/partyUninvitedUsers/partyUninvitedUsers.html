@@ -1,0 +1,9 @@
+<ul> Invite people:
+    <li ng-repeat="user in partyUninvitedUsers.users | uninvitedFilter:partyUninvitedUsers.party">
+        <span>{{ user | displayNameFilter }}
+
+        <button style="float:right" ng-click="partyUninvitedUsers.invite(user)">Invite</button></span>
+
+        </span>
+    </li>
+</ul>
