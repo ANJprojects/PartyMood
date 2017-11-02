@@ -8,6 +8,15 @@
                 <input type="text" id="search" placeholder="Search parties.." style="width: 150px;height:29px;" ng-model="ownedParties.searchText">
                 <!-- <label for="search" style="color:#e53935"><i class="small material-icons">search</i></label> -->
             </form>
+
+            <!-- <div class="wrap" style="width: 100%;top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <div class="search" style="width: 100%; position: relative">
+                    <input type="text" class="searchTerm" ng-model="ownedParties.searchText" style="float: left; width: 100%; border: 3px solid #00B4CC; padding: 5px; height: 20px; border-radius: 5px; outline: none; color: #9DBFAF;" placeholder="Search parties..">
+                    <button type="submit" class="searchButton" style="position: absolute; right: -50px; width: 40px; height: 36px; border: 1px solid #00B4CC; background: #00B4CC; text-align: center; color: #fff; border-radius: 5px; cursor: pointer; font-size: 20px;">
+                           <i class="fa fa-search"></i>
+                        </button>
+                </div>
+            </div> -->
         </div>
     </div>
     <div class="col l4" dir-paginate="party in ownedParties.parties | itemsPerPage: ownedParties.perPage" total-items="ownedParties.partiesCount">
